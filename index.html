@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Pets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sky"><span></span><span></span><span></span></div>
+  <header class="topbar">
+    <div class="brand"><span class="paw">🐾</span><span id="siteTitle">Dream Pets</span></div>
+    <nav><a href="#pets">Pets</a><a href="#como">Como funciona</a><a href="#pedido">Pedido</a></nav>
+    <div class="secret-box"><button class="secret" id="editSecret" title="admin">🌸</button><button class="secret" id="ordersSecret" title="respostas">📋</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="heroText">
+        <p class="badge" id="badgeText">Evento especial de pets</p>
+        <h1 id="heroTitle">Escolha seus pets favoritos</h1>
+        <p id="heroDesc">Selecione até 3 pets, escolha a versão e envie sua solicitação. Site fã, feito para organização de um trabalho.</p>
+        <div class="heroBtns"><button class="btn" id="mainBtn">Escolher pets</button><button class="btn ghost" onclick="document.querySelector('#pedido').scrollIntoView({behavior:'smooth'})">Ver pedido</button></div>
+      </div>
+      <div class="heroPets" id="heroPets"></div>
+    </section>
+
+    <section class="how" id="como">
+      <h2 id="howTitle">Como funciona?</h2>
+      <p id="howDesc">Escolha no máximo 3 pets. Não envie senha, PIN ou dados privados de jogos. Use apenas informações autorizadas.</p>
+      <div class="steps">
+        <article><b>1</b><h3>Escolha</h3><p id="step1">Veja os pets disponíveis.</p></article>
+        <article><b>2</b><h3>Personalize</h3><p id="step2">Marque Normal, Neon, Mega, Fly ou Ride.</p></article>
+        <article><b>3</b><h3>Envie</h3><p id="step3">A resposta aparece no painel oculto.</p></article>
+      </div>
+    </section>
+
+    <section class="pets-section" id="pets">
+      <div class="section-head">
+        <div><h2>Pets disponíveis</h2><p id="noticeText">Use somente um usuário público do jogo. Nunca coloque senha ou PIN.</p></div>
+        <div class="filters"><input id="searchPet" placeholder="Pesquisar pet..."><select id="filterRarity"><option value="">Todas raridades</option><option>Legendary</option><option>Ultra-Rare</option><option>Rare</option></select></div>
+      </div>
+      <div id="petsGrid" class="petsGrid"></div>
+    </section>
+
+    <section class="order" id="pedido">
+      <div class="cartBox">
+        <h2>Seu pedido</h2>
+        <div id="cartList"></div>
+      </div>
+      <div class="formBox">
+        <h2>Enviar solicitação</h2>
+        <label id="userLabel">Nome de usuário</label><input id="username" placeholder="Digite o usuário público">
+        <label id="phoneLabel">Telefone do responsável</label><input id="phone" placeholder="(00) 00000-0000">
+        <button class="btn" id="sendBtn">Enviar</button><p id="msg"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footerText">© 2026 Dream Pets — site fã editável.</footer>
+
+  <div class="modal" id="passModal"><div class="panel smallPanel"><button class="x" data-close="passModal">×</button><h2>Área restrita</h2><p>Digite a senha para continuar.</p><input type="password" id="passInput" placeholder="Senha"><button class="btn" id="passBtn">Entrar</button><p id="passMsg"></p></div></div>
+
+  <div class="modal" id="editModal"><div class="panel"><button class="x" data-close="editModal">×</button><h2>🌸 Editar site para todos</h2><div class="tabs"><button class="tab active" data-tab="textos">Textos</button><button class="tab" data-tab="petsAdmin">Pets</button></div><div id="tab-textos" class="tabPage show"><div id="editFields" class="editGrid"></div><button class="btn" id="saveTexts">Salvar textos</button><p id="saveMsg"></p></div><div id="tab-petsAdmin" class="tabPage"><div class="petAdminTop"><button class="btn" id="addPetAdmin">+ Adicionar pet</button></div><div id="petsAdminList"></div><button class="btn" id="savePetsAdmin">Salvar pets</button><p class="hint">Dica: para trocar foto, coloque o caminho da imagem, exemplo: <b>assets/pets/unicornio.png</b>.</p></div></div></div>
+
+  <div class="modal" id="ordersModal"><div class="panel"><button class="x" data-close="ordersModal">×</button><h2>📋 Respostas recebidas</h2><input id="searchOrders" placeholder="Pesquisar usuário ou telefone..."><button class="btn ghost" id="refreshOrders">Atualizar</button><div id="ordersList"></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
